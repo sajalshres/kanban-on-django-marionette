@@ -1,0 +1,29 @@
+// everything that is reusable – buttons, navbars, cards, and so on
+
+.page-loader {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: #0d6efd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transition: opacity 0.3s linear;
+}
+
+.k-btn-huge {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.k-card-board {
+  width: 250px;
+}
+
+.k-card-lane {
+  min-width: 350px !important;
+  min-height: 550px;
+}

@@ -1,0 +1,14 @@
+if tags.length
+    .card-header
+        each tag in tags
+            span.badge.rounded-pill.me-1.bg-primary #{tag.name}
+.card-body
+    h6 #{title} 
+.card-footer.d-flex.justify-content-between.p-1
+    a.btn.btn-link(href="#")
+        i.fas.fa-arrow-up.text-danger
+    span.owners.d-flex.justify-content-end
+        a.btn.btn-secondary.rounded-circle.me-1(href="#")
+            i.fas.fa-user
+        a.btn.btn-secondary.rounded-circle.me-1(href="#")
+            i.fas.fa-user

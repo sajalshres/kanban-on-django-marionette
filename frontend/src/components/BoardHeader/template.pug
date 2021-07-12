@@ -1,0 +1,53 @@
+#tagsModal.modal.fade(tabindex="-1", aria-labelledby="tagsModalLabel" aria-hidden="true")
+    .modal-dialog
+        .modal-content 
+            .modal-header
+                h5#tagsModalLabel.modal-title Tags
+                button.btn.btn-close(data-bs-dismiss="modal" aria-label="Close")
+            .modal-body 
+                button.btn.btn-primary.btn-sm.mb-2(data-bs-target="#addTagModal" data-bs-toggle="modal" data-bs-dismiss="modal")
+                    i.fas.fa-plus 
+                    span.m-1 Tag
+                each tag in tags
+                    .card.mb-1
+                        .card-body.d-flex.flex-wrap.justify-content-between.p-2
+                            input.k-tag-edit-input.p-0.m-0.w-75.form-control-plaintext(type="text" value=`${tag.name}` data-id=`${tag.id}`)
+                            .k-action-items
+                                button.k-tag-delete-btn.btn.btn-light.btn-sm.text-danger(data-id=`${tag.id}` data-bs-dismiss="modal")
+                                    i.fas.fa-trash-alt
+            .modal-footer
+                button.btn.btn-secondary(data-bs-dismiss="modal") Close
+
+#addTagModal.modal.fade(tabindex="-1", aria-labelledby="addTagModalLabel" aria-hidden="true")
+    .modal-dialog
+        .modal-content
+            .modal-header
+                h5#addTagModalLabel.modal-title Add Tag
+                button.btn.btn-close(data-bs-dismiss="modal" aria-label="Close")
+            .modal-body
+                input.k-add-tag-input.form-control.form-control(type="text", placeholder="Name")
+            .modal-footer
+                button.btn.btn-secondary(data-bs-target="#tagsModal" data-bs-toggle="modal" data-bs-dismiss="modal") Back
+                button.k-add-tag-btn.btn.btn-primary(data-bs-dismiss="modal") Save
+
+#addLaneModal.modal(tabindex="-1" aria-labelledby="addLaneModalLabel")
+    .modal-dialog 
+        .modal-content
+            .modal-header
+                h5#addLaneModalLabel.modal-title Add Lane
+                button.btn.btn-close(data-bs-dismiss="modal" aria-label="Close")
+            .modal-body
+                input.k-add-lane-input.form-control(type="text", placeholder="Lane Name")
+            .modal-footer
+                button.btn.btn-secondary(data-bs-dismiss="modal") Close
+                button.k-add-lane-modal-btn.btn.btn-primary(data-bs-dismiss="modal") Add
+
+.container-fluid 
+    a.navbar-brand.text-primary(href="#") #{name}
+    .d-flex.justify-content-end
+        button.btn.btn-outline-primary.m-1(type="button" data-bs-toggle="modal" data-bs-target="#tagsModal")
+            i.fas.fa-tags
+            span.m-1 Tags
+        button.k-add-lane-btn.btn.btn-outline-primary.m-1(type="button" data-bs-toggle="modal" data-bs-target="#addLaneModal")
+            i.fas.fa-plus 
+            span.m-1 Add Lane

@@ -1,0 +1,40 @@
+version: "3.8"
+
+services: 
+    backend:
+        build: 
+            context: backend/
+            dockerfile: Dockerfile
+        image: kanban/backend:develop
+        container_name: kanban_backend
+        command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+            - ./backend/:/app
+        environment: 
+            - DJANGO_DEBUG=1
+            - DJANGO_SECRET_KEY=django-insecure-url@kfr0duri1uq&qwu)2aa)7+%)sfy)z%moiwa!h0k7@f$$4zu
+            - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+            - DJANGO_SETTINGS_MODULE=config.settings_develop
+            - POSTGRES_HOST=database
+            - POSTGRES_PORT=5432
+            - POSTGRES_DB=kanban
+            - POSTGRES_USER=kanbanadmin
+            - POSTGRES_PASSWORD=adminp@ss123
+        ports: 
+            - 8000:8000
+            - 5678:5678
+        depends_on: 
+            - database
+    database:
+        image: postgres:13-alpine
+        container_name: kanban_database
+        volumes:
+            - postgres_data:/var/lin/postgresql/data/
+        environment:
+            - POSTGRES_DB=kanban
+            - POSTGRES_USER=kanbanadmin
+            - POSTGRES_PASSWORD=adminp@ss123
+        ports:
+            - 5432:5432
+volumes:
+    postgres_data:

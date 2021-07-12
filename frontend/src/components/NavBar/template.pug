@@ -1,0 +1,20 @@
+.container-fluid 
+    a.navbar-brand(href="/") 
+        i.fab.fa-flipboard
+        span.m-2 Kanban
+    button.navbar-toggler(type="button" data-bs-toggle="collapse", data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+    .collapse.navbar-collapse#navbarNavAltMarkup
+        .navbar-nav
+            a.nav-link.active(href="/") Home
+    .d-flex.justify-content-end
+        .dropdown
+            button#navbarUserDropdownLink.btn.btn-secondary.rounded-circle(type="button", data-bs-toggle="dropdown" aria-expanded="false")
+                i.fa.fa-user
+            ul.dropdown-menu.dropdown-menu-end(aria-labelledby="navbarUserDropdownLink")
+                li
+                    button.k-user-profile-btn.dropdown-item Profile
+                li
+                    button.k-user-logout-btn.dropdown-item Logout
+        
+

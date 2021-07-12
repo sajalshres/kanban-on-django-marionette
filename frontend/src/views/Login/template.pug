@@ -1,0 +1,14 @@
+.row.justify-content-md-center.min-vh-100
+    .col-md-4.d-flex.flex-column.justify-content-center
+        form
+            .card 
+                .card-header  Login to Kanban Board 
+                .card-body
+                    .mb-3
+                        label.form-label(for="k-login-username") Username
+                        input#k-login-username.form-control(type="text" )
+                    .mb-3
+                        label.form-label(for="k-login-password") Password
+                        input#k-login-password.form-control(type="password" )
+                .card-footer
+                    button.btn.btn-primary(type="submit") Login

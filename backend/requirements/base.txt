@@ -1,0 +1,10 @@
+# Core
+Django>=3.2
+djangorestframework==3.12.4
+django-filter==2.4.0
+Markdown==3.3.4
+Pillow==8.3.0
+
+# Authentication
+django-allauth==0.44.0
+dj-rest-auth==2.1.7

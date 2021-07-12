@@ -1,0 +1,6 @@
+-r ./base.txt
+
+psycopg2-binary
+black
+pylint
+django-extensions

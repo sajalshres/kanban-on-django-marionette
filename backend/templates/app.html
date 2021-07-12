@@ -1,0 +1,36 @@
+{% load utils %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban</title>
+    <link href="{% static 'build/styles.css' %}" rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="page-loader">
+        <div class="d-flex justify-content-center">
+            <div class="spinner-grow text-light me-1" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-light me-1" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-light me-1" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div id="app">
+    </div>
+    <script>
+        window.INITIAL_DATA = {{ initial_data | jsonencode | safe }};
+    </script>
+    <script src="{% static 'build/main.built.js' %}"></script>
+</body>
+
+</html>
