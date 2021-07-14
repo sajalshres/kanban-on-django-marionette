@@ -1,5 +1,20 @@
+#editBoardModal.modal.fade(tabindex="-1", aria-labelledby="editBoardModalLabel" aria-hidden="true")
+    .modal-dialog
+        .modal-content
+            .modal-header
+                h5#editBoardModalLabel.modal-title Edit board #{name}
+                button.btn.btn-close(data-bs-dismiss="modal" aria-label="Close")
+            .modal-body
+                input.k-edit-board-input.form-control.form-control(type="text", placeholder="Name")
+            .modal-footer
+                button.btn.btn-secondary(data-bs-target="#editBoardModal" data-bs-toggle="modal" data-bs-dismiss="modal") Back
+                button.k-edit-board-btn.btn.btn-primary(data-bs-dismiss="modal") Save
+
+
 .card-header.p-0.m-0.d-flex.justify-content-end
-    a(href="#").alight-right
+    button.k-board-edit-btn.btn.btn-sm.p-0.alight-right(data-bs-target="#editBoardModal" data-bs-toggle="modal" data-bs-dismiss="modal")
+        i.fas.fa-pencil-alt.p-1.text-light
+    button.k-board-delete-btn.btn.p-0.alight-right
         i.fas.fa-times-circle.p-1.text-light 
 .card-body.d-flex.justify-content-center.align-items-center
-    a.btn.btn-link.text-light.text-underline-none(href=`board/${id}` target="_self") #{name}
+    a.m-3.btn.btn-link.text-light.text-underline-none(href=`board/${id}` target="_self") #{name}

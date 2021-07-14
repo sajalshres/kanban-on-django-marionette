@@ -25,7 +25,7 @@ export default View.extend({
     });
   },
 
-  async onRender() {    
+  async onRender() {
     this.getRegion("welcome").show(new WelcomeView());
 
     await this.fetchBoardList();

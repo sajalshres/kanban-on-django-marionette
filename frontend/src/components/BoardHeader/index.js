@@ -34,12 +34,17 @@ export default View.extend({
     "click @ui.deleteTagButton": "deleteTag",
   },
 
+  initialize() {
+    boardModel.tags.on("add change destroy", () => {
+      this.render();
+    });
+  },
+
   addTag() {
     boardModel.tags.create({
       name: this.ui.addTagInput.val(),
       board: boardModel.get("id"),
     });
-    this.render()
   },
 
   editTag(event) {
@@ -54,7 +59,6 @@ export default View.extend({
     const model = this.model.tags.get(id);
     confirm("This action will affect dependent cards, Are you sure?") &&
       model.destroy();
-    this.render();
   },
 
   addLane() {

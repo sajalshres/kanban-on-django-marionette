@@ -2,5 +2,5 @@
     "python.analysis.extraPaths": ["backend"],
     "python.linting.enabled": true,
     "python.formatting.provider": "black",
-    "python.pythonPath": "/home/vagrant/Git/kanban-on-django-marionette/venv/bin/python3"
+    "python.pythonPath": "venv/bin/python"
 }

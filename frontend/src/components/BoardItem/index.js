@@ -12,4 +12,25 @@ export default View.extend({
       name: this.model.get("name"),
     };
   },
+
+  ui: {
+    deleteBoardButton: ".k-board-delete-btn",
+    editBoardButton: ".k-edit-board-btn",
+    editBoardInput: ".k-edit-board-input",
+  },
+
+  events: {
+    "click @ui.deleteBoardButton": "deleteBoard",
+    "click @ui.editBoardButton": "editBoard",
+  },
+
+  deleteBoard() {
+    confirm(
+      "Deleteing this board will remove all dependent items. Are you sure?"
+    ) && this.model.destroy();
+  },
+
+  editBoard() {
+    this.model.save({ name: this.ui.editBoardInput.val() }, { patch: true });
+  },
 });

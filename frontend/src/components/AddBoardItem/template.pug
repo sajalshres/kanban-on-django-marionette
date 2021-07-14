@@ -1,2 +1,15 @@
-a.m-5.btn.btn-link.text-light
+#addBoardModal.modal.fade(tabindex="-1", aria-labelledby="addBoardModalLabel" aria-hidden="true")
+    .modal-dialog
+        .modal-content
+            .modal-header
+                h5#addBoardModalLabel.modal-title Add a board
+                button.btn.btn-close(data-bs-dismiss="modal" aria-label="Close")
+            .modal-body
+                input.k-add-board-input.form-control.form-control(type="text", placeholder="Name")
+            .modal-footer
+                button.btn.btn-secondary(data-bs-target="#boardsModal" data-bs-toggle="modal" data-bs-dismiss="modal") Back
+                button.k-add-board-btn.btn.btn-primary(data-bs-dismiss="modal") Save
+
+
+button.m-5.btn.btn-link.text-light.border-none(data-bs-target="#addBoardModal" data-bs-toggle="modal" data-bs-dismiss="modal")
     i.fas.fa-plus.fa-lg

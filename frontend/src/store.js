@@ -61,8 +61,7 @@ const MemberCollection = Collection.extend({
   },
 });
 
-const TagModel = Model.extend({
-});
+const TagModel = Model.extend({});
 const TagCollection = Collection.extend({
   model: TagModel,
 
@@ -160,7 +159,7 @@ const BoardModel = Model.extend({
           resolve(true);
         })
         .fail((error) => {
-          console.error("Fetch boards failed", error);
+          console.error("Fetch board failed", error);
           reject(error);
         });
     });
@@ -168,7 +167,7 @@ const BoardModel = Model.extend({
 });
 
 const BoardCollection = Collection.extend({
-  model: BoardModel,
+  comparator: "id",
 
   url() {
     return "/api/kanban/boards/";
