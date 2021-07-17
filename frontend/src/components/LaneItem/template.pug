@@ -1,9 +1,34 @@
+.modal.fade(id=`addCardModal${id}` tabindex="-1" aria-labelledby=`addCardModal${id}Label` aria-hidden="true")
+    .modal-dialog 
+        .modal-content 
+            .modal-header Add a card 
+            .modal-body.d-flex.flex-column
+                input.k-add-card-title.form-control.mb-2(type="text" placeholder="Title")
+                textarea.k-add-card-text.form-control.mb-2(rows="3"  placeholder="Describe the card...")
+                select.k-add-card-select-assignee.mb-2(id=`addSelectAssignee${id}` name="assignee" multiple="multiple")
+                    option(value="") Select asignees...
+                    each assignee in assignees
+                        option(value=`${assignee.id}`) #{assignee.username}
+                select.k-add-card-select-priority.mb-2(id=`addSelectPriority${id}` name="priority")
+                    option(value="") Select priority...
+                    option(value="H") High
+                    option(value="M") Medium 
+                    option(value="L") Low
+                select.k-add-card-select-tags.mb-2(id=`addSelectTags${id}` name="tags" multiple="multiple")
+                    option(value="") Select tags...
+                    each tag in tags
+                        option(value=`${tag.id}`) #{tag.name}
+            .modal-footer 
+                button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Close
+                button.k-add-card-save-btn.btn.btn-primary(type="button" data-bs-dismiss="modal") Save
+
+
 .card-header.d-flex.justify-content-between
     input.k-lane-text-input.p-0.m-0.w-75.form-control-plaintext(type="text" value=`${title}`)
     button.k-lane-remove-btn.btn.btn-sm.p-0.m-0.text-danger
         i.fas.fa-trash-alt
 .card-body
 .card-footer
-    button.btn.btn-light(data-bs-toggle="modal" data-bs-target="#addCardModal")
+    button.btn.btn-light(data-bs-toggle="modal" data-bs-target=`#addCardModal${id}`)
         i.fas.fa-plus
         span.m-1.text-secondary Add card

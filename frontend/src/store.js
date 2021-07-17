@@ -81,6 +81,10 @@ const TagCollection = Collection.extend({
 const CardModel = Model.extend({});
 const CardCollection = Collection.extend({
   model: CardModel,
+
+  url() {
+    return "/api/kanban/cards/";
+  },
 });
 
 const LaneModel = Model.extend({

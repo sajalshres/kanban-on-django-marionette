@@ -1,14 +1,81 @@
+.modal.fade(id=`cardDetailModal${id}` tabindex="-1" aria-labelledby=`cardDetailModalLabel${id}` aria-hidden="true")
+    .modal-dialog.modal-xl
+        .modal-content 
+            .modal-body
+                .container-fluid
+                    .row
+                        .col-8.p-3
+                            .row 
+                                .col
+                                    label.form-label Title
+                                    input.k-card-title.form-control(type="text" placeholder="Title" aria-label="Card title" value=`${title}`)
+                                    label.form-label.my-2 Description
+                                    textarea.k-card-desc.form-control(name="", cols="30", rows="5") #{description}
+                            .row 
+                                .col 
+                                    label.form-label Comments
+                                    .row.mb-4
+                                        .col-sm-1
+                                            btn.btn.btn-secondary.rounded-circle(type="button")
+                                                i.fas.fa-user
+                                        .col
+                                            textarea.form-control.my-1(name="", cols="20", rows="3" placeholder="Place a comment")
+                                            button.btn.btn-light.btn-sm Post comment
+                                    .row.my-2
+                                        .col-sm-1
+                                            btn.btn.btn-secondary.rounded-circle(type="button")
+                                                i.fas.fa-user
+                                        .col
+                                            p.small This is a comment
+                                            button.btn.btn-light.btn-sm.text-danger  Delete
+                                    .row.my-2
+                                        .col-sm-1
+                                            btn.btn.btn-secondary.rounded-circle(type="button")
+                                                i.fas.fa-user
+                                        .col
+                                            p.small This is a comment
+                                            button.btn.btn-light.btn-sm.text-danger Delete
+
+                        .col.p-3
+                            label.form-label Assignees
+                            select.k-card-assignee.mb-2(id=`cardSelectAssignee${id}` name="assignee" multiple="multiple")
+                                each assignee in assignees
+                                    option(value=`${assignee.id}` selected=assignee.selected? "selected": false) #{assignee.username}
+                                each assignee in assignees
+                                    option(value=`${assignee.id}`) #{assignee.username}
+                            label.form-label Priority
+                            select.k-card-priority.mb-2(id=`cardSelectPriority${id}` name="priority")
+                                each item in [{value:"H", name:"High"}, {value:"M", name:"Medium"}, {value:"L", name:"Low"}]
+                                    option(value=`${item.value}` selected=(priority === item.value) ? "selected": false) #{item.name}
+                            label.form-label Tags
+                            select.k-card-tags.mb-2(id=`cardSelectTag${id}` name="assignee" multiple="multiple")
+                                each tag in tags
+                                    option(value=`${tag.id}` selected=(tag.selected ? "selected" : false)) #{tag.name}
+                            
+                            .container.p-0.m-0.mt-4
+                                p.small Created
+                                    small.text-muted.ms-1 7 days ago 
+                                p.small Updated
+                                    small.text-muted.ms-1 1 day ago 
+                                button.k-card-delete-btn.btn.btn-light.mt-2(type="button" data-bs-dismiss="modal")
+                                    i.fas.fa-trash-alt.text-danger
+                                    span.ms-1 Delete Card
+            .modal-footer
+                button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Close
+                button.k-card-save-btn.btn.btn-primary(type="button" data-bs-dismiss="modal") Save Changes
+
 if tags.length
     .card-header
         each tag in tags
-            span.badge.rounded-pill.me-1.bg-primary #{tag.name}
+            if tag.selected
+                span.badge.rounded-pill.me-1.bg-primary #{tag.name}
 .card-body
-    h6 #{title} 
+    label.btn.btn-block.stretched-link(data-bs-toggle="modal" data-bs-target=`#cardDetailModal${id}`) #{title} 
 .card-footer.d-flex.justify-content-between.p-1
     a.btn.btn-link(href="#")
-        i.fas.fa-arrow-up.text-danger
+        i.fas.fa-arrow-up(class=`${priorityClass}`)
     span.owners.d-flex.justify-content-end
-        a.btn.btn-secondary.rounded-circle.me-1(href="#")
-            i.fas.fa-user
-        a.btn.btn-secondary.rounded-circle.me-1(href="#")
-            i.fas.fa-user
+        each assignee in assignees
+            if assignee.selected
+                btn.btn.btn-secondary.rounded-circle.me-1(type="button")
+                    i.fas.fa-user

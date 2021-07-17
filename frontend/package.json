@@ -35,6 +35,7 @@
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "regenerator-runtime": "^0.13.7",
+    "selectize": "^0.12.6",
     "underscore": "^1.13.1"
   },
   "devDependencies": {

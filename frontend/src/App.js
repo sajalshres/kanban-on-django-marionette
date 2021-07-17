@@ -12,6 +12,7 @@ import AppLayoutView from "./components/AppLayout";
 import "./utils/csrf";
 import "./sass/style.scss";
 import "bootstrap/dist/js/bootstrap.min";
+import "selectize";
 
 const App = Application.extend({
   region: "#app",
