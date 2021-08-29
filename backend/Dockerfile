@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.8-buster
 
 # Make sure logs are received in a timely manner
 ENV PYTHONBUFFERED 1
@@ -24,3 +24,6 @@ COPY . .
 
 # Wait for database to be ready, run database migrations, collectstatic for nginx to serve and then start the app
 ENTRYPOINT [ "/app/entrypoint.sh" ]
+
+# Run the project
+CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]

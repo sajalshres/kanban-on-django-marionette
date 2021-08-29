@@ -31,6 +31,16 @@ const AuthModel = Model.extend({
     }
   },
 
+  register({ username, email, password1, password2 }) {
+    if (password1.length && password2.length) {
+      return api
+        .post("/api/auth/register/", { username, email, password1, password2 })
+        .done((response) => {
+          console.log({ response });
+        });
+    }
+  },
+
   logout() {
     this.set({ id: -1, logged_in: false });
     this.trigger("logout");

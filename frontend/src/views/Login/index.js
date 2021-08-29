@@ -12,22 +12,82 @@ export default View.extend({
 
   ui: {
     form: "form",
-    username: "#k-login-username",
-    password: "#k-login-password",
+    passwordConfirmSection: ".k-confirm-section",
+    usernameInput: ".k-login-username",
+    passwordInput: ".k-login-password",
+    passwordConfirmInput: ".k-confirm-password",
+    emailInput: ".k-login-email",
+    newUserButton: ".k-newuser-button",
+    registerButton: ".k-register-button",
+    cancelButton: ".k-cancel-button",
   },
 
   events: {
-    "submit form": "login",
+    submit: "onSubmit",
+    "click @ui.newUserButton": "onNewUser",
+    "click @ui.registerButton": "onRegister",
+    "click @ui.cancelButton": "onCancel",
   },
 
-  login(event) {
+  templateContext() {
+    return {
+      isNewUser: this.isNewUser,
+    };
+  },
+
+  initialize() {
+    this.isNewUser = false;
+  },
+
+  onSubmit(event) {
     event.preventDefault();
-    const { username, password } = this.ui;
+    const { usernameInput, passwordInput } = this.ui;
+    console.log({ auth: auth });
     auth
-      .login({ username: username.val(), password: password.val() })
+      .login({ username: usernameInput.val(), password: passwordInput.val() })
       .fail((response) => {
         console.error("login failed!!!");
         console.error({ response });
       });
+  },
+
+  onNewUser(event) {
+    event.preventDefault();
+    this.isNewUser = true;
+    this.render();
+  },
+
+  onRegister(event) {
+    event.preventDefault();
+    const { usernameInput, emailInput, passwordInput, passwordConfirmInput } =
+      this.ui;
+
+    if (passwordInput.val() !== passwordConfirmInput.val()) {
+      alert("Password and Confirm Password doesnot match!");
+      return;
+    }
+
+    const registerResult = auth
+      .register({
+        username: usernameInput.val(),
+        email: emailInput.val(),
+        password1: passwordInput.val(),
+        password2: passwordConfirmInput.val(),
+      })
+      .done(() => {
+        location.reload();
+      })
+      .fail((response) => {
+        console.log({ failedResponse: response });
+        alert(`${response.responseText}`);
+        return;
+      });
+    console.log({ registerResult });
+  },
+
+  onCancel(event) {
+    event.preventDefault();
+    this.isNewUser = false;
+    this.render();
   },
 });

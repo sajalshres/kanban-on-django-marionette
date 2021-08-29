@@ -2,13 +2,25 @@
     .col-md-4.d-flex.flex-column.justify-content-center
         form
             .card 
-                .card-header  Login to Kanban Board 
+                .card-header  Login to Kanban App 
                 .card-body
                     .mb-3
                         label.form-label(for="k-login-username") Username
-                        input#k-login-username.form-control(type="text" )
+                        input.k-login-username.form-control(type="text" )
                     .mb-3
                         label.form-label(for="k-login-password") Password
-                        input#k-login-password.form-control(type="password" )
-                .card-footer
-                    button.btn.btn-primary(type="submit") Login
+                        input.k-login-password.form-control(type="password" )
+                    if isNewUser
+                        .mb-3.k-confirm-section
+                            label.form-label(for="k-login-password-repeat") Confirm Password
+                            input.k-confirm-password.form-control(type="password" )
+                        .mb-3
+                            label.form-label(for="k-login-email") Email
+                            input.k-login-email.form-control(type="text" )
+                .card-footer.d-flex.flex-row.justify-content-between
+                    if !isNewUser
+                        button.k-login-button.btn.btn-primary(type="submit") Login
+                        button.k-newuser-button.btn.btn-secondary(type="button") New User?
+                    else 
+                        button.k-register-button.btn.btn-primary(type="button") Register 
+                        button.k-cancel-button.btn.btn-secondary(type="button") Cancel

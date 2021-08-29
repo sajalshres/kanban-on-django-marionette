@@ -1,0 +1,30 @@
+{
+  "name": "kanban-on-django-marionette",
+  "version": "1.0.0",
+  "description": "A KanBan application using django and backbone.marionette JS.",
+  "main": "index.js",
+  "scripts": {
+    "compose:up": "docker-compose up -d",
+    "compose:stop": "docker-compose stop",
+    "compose:down": "docker-compose down",
+    "compose:build": "docker-compose build",
+    "compose:push": "docker-compose push",
+    "compose:logs": "docker-compose logs -f --tail=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sajalshres/kanban-on-django-marionette.git"
+  },
+  "keywords": [
+    "django",
+    "backbone",
+    "maironette",
+    "kanban"
+  ],
+  "author": "Sajal Shrestha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sajalshres/kanban-on-django-marionette/issues"
+  },
+  "homepage": "https://github.com/sajalshres/kanban-on-django-marionette#readme"
+}
